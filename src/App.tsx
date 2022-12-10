@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { MoviesList, MovieProps } from './components';
 import './App.css';
 
@@ -21,7 +20,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="App">
       <MoviesList movies={moviesInTheater} />
     </div>
   );
