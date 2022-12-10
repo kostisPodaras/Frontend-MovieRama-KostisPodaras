@@ -1,3 +1,5 @@
+import { Card } from '../card/Card';
+import styles from './MoviesList.module.css';
 export interface MovieProps {
   poster_path: string;
   title: string;
@@ -17,5 +19,11 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
     return null;
   }
 
-  return <div>Movieeess</div>;
+  return (
+    <div className={styles.container}>
+      {movies.map((movie) => (
+        <Card key={movie.id} movie={movie} />
+      ))}
+    </div>
+  );
 };
