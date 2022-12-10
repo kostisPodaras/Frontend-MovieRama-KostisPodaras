@@ -1,4 +1,3 @@
-import { useCallback, useRef } from 'react';
 import { Card } from '../card/Card';
 import styles from './MoviesList.module.css';
 export interface MovieProps {
@@ -21,15 +20,20 @@ export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
     return null;
   }
 
-  // If the element is the last one, we add a ref to it, so we can observe it
-  const content = movies.map((movie, i) => {
-    if (movies.length === i + 1) {
-      console.log('Last element');
-      return <Card ref={lastMovieRef} key={movie.id} movie={movie} />;
-    }
+  return (
+    <div className={styles.container}>
+      {movies.map((movie, i) => {
+        // If the element is the last one, we add a ref to it in order to observe it
+        const isLastElement = movies.length === i + 1;
 
-    return <Card key={movie.id} movie={movie} />;
-  });
-
-  return <div className={styles.container}>{content}</div>;
+        return (
+          <Card
+            ref={isLastElement ? lastMovieRef : null}
+            key={movie.id}
+            movie={movie}
+          />
+        );
+      })}
+    </div>
+  );
 };

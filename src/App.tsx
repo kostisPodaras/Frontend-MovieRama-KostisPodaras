@@ -1,21 +1,17 @@
 import { useState, useCallback, useRef } from 'react';
 import useMovies from './hooks/useMovies';
 import { MoviesList } from './components';
-
 import './App.css';
-
-const API = `https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=1`;
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
 
-  const intersectionObserver = useRef<any>();
+  const intersectionObserver = useRef<IntersectionObserver | null>(null);
 
   const lastMovieRef = useCallback(
-    (movie: any) => {
+    (movie: HTMLDivElement) => {
       if (isLoading) return;
-      console.log('Movie', movie);
 
       if (intersectionObserver.current) {
         intersectionObserver.current.disconnect();
