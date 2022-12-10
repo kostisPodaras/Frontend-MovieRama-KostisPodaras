@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import useMovies from './hooks/useMovies';
 import { MoviesList } from './components';
 
@@ -8,7 +8,29 @@ const API = `https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d9115
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const { results, isError } = useMovies(pageNumber);
+  const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
+
+  const intersectionObserver = useRef<any>();
+
+  const lastMovieRef = useCallback(
+    (movie: any) => {
+      if (isLoading) return;
+      console.log('Movie', movie);
+
+      if (intersectionObserver.current) {
+        intersectionObserver.current.disconnect();
+      }
+
+      intersectionObserver.current = new IntersectionObserver((movies) => {
+        if (movies[0].isIntersecting && hasNextPage) {
+          setPageNumber((prev) => prev + 1);
+        }
+      });
+
+      if (movie) intersectionObserver.current.observe(movie);
+    },
+    [isLoading, hasNextPage],
+  );
 
   if (isError) {
     return <h1>Something went wrong</h1>;
@@ -16,7 +38,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <MoviesList movies={results} />
+      <MoviesList movies={results} lastMovieRef={lastMovieRef} />
     </div>
   );
 };
