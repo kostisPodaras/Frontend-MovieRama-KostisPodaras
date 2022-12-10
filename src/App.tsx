@@ -1,29 +1,24 @@
-import { useEffect, useState } from 'react';
-import { MoviesList, MovieProps } from './components';
+import { useState } from 'react';
+import useMovies from './hooks/useMovies';
+import { MoviesList } from './components';
+
 import './App.css';
 
-const API =
-  'https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=1';
+const API = `https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=1`;
 
-function App() {
-  const [moviesInTheater, setMoviesInTheater] = useState<MovieProps[]>([]);
+const App = () => {
+  const [pageNumber, setPageNumber] = useState(1);
+  const { results, isError } = useMovies(pageNumber);
 
-  useEffect(() => {
-    const fetchMoviesInTheaters = async () => {
-      const request = await fetch(API);
-      const response = await request.json();
-
-      setMoviesInTheater(response.results);
-    };
-
-    fetchMoviesInTheaters();
-  }, []);
+  if (isError) {
+    return <h1>Something went wrong</h1>;
+  }
 
   return (
     <div className="App">
-      <MoviesList movies={moviesInTheater} />
+      <MoviesList movies={results} />
     </div>
   );
-}
+};
 
 export default App;

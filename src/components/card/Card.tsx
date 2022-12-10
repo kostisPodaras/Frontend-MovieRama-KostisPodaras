@@ -6,7 +6,6 @@ interface CardProps {
 }
 
 export const Card = ({ movie }: CardProps) => {
-  console.log(movie);
   return (
     <div>
       <p className={styles.title}>{movie.title}</p>
