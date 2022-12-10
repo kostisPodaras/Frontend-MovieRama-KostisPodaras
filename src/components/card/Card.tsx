@@ -11,12 +11,12 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
     console.log('movie', movie);
     return (
       <div ref={ref || null}>
-        <p className={styles.title}>{movie.title}</p>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt="movie"
           className={styles.posterImage}
         />
+        <p className={styles.title}>{movie.title}</p>
       </div>
     );
   },
