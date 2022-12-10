@@ -23,7 +23,7 @@ export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
   return (
     <div className={styles.container}>
       {movies.map((movie, i) => {
-        // If the element is the last one, we add a ref to it in order to observe it
+        // If the element is the last one, we add a ref to it in order to observe it and trigger a new request when its getting into the viewport
         const isLastElement = movies.length === i + 1;
 
         return (

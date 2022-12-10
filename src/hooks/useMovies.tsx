@@ -1,13 +1,24 @@
 import { useEffect, useState } from 'react';
 import { MovieProps } from '../components/movies-list/MoviesList';
+import { getUniqueElements } from '../utils';
 
-const getMovies = async (pageNumber: number): Promise<MovieProps[]> => {
+const getMovies = async (
+  pageNumber: number,
+): Promise<{
+  data: MovieProps[];
+  isLastPage: boolean;
+}> => {
   const response = await fetch(
     `https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${pageNumber}`,
   );
   const data = await response.json();
 
-  return data.results;
+  const isLastPage = data.page === data.total_pages;
+
+  return {
+    data: data.results,
+    isLastPage,
+  };
 };
 
 const useMovies = (pageNumber = 1) => {
@@ -21,9 +32,14 @@ const useMovies = (pageNumber = 1) => {
     setIsError(false);
 
     getMovies(pageNumber)
-      .then((data) => {
-        setResults((prev: MovieProps[]) => [...prev, ...data]);
-        setHasNextPage(Boolean(data.length));
+      .then(({ data, isLastPage }) => {
+        setResults((prev: MovieProps[]) => {
+          // Filtering out duplicate movies, seems pages from API contain duplicate movies
+          const uniqueMovies = getUniqueElements([...prev, ...data], 'id');
+
+          return uniqueMovies;
+        });
+        setHasNextPage(!isLastPage);
         setIsLoading(false);
       })
       .catch((error) => {
