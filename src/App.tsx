@@ -1,7 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import useMovies from './hooks/useMovies';
 import { MoviesList } from './components';
-import { getUniqueElements } from './utils';
 import './App.css';
 
 const App = () => {
@@ -9,7 +8,6 @@ const App = () => {
   const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
 
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
-
   const lastMovieRef = useCallback(
     (movie: HTMLDivElement) => {
       if (isLoading) return;

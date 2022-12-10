@@ -1,12 +1,6 @@
-// @ts-ignore: Unreachable code error
-export const getUniqueElements = (array, filterByProperty) =>
-  array.filter(
-    // @ts-ignore: Unreachable code error
+export const getUniqueElements = (arr: any[], filterProperty: string) =>
+  arr.filter(
     (value, index, self) =>
-      self.findIndex(
-        // @ts-ignore: Unreachable code error
-        (v) =>
-          v[filterByProperty] === value[filterByProperty] &&
-          v[filterByProperty] === value[filterByProperty],
-      ) === index,
+      index ===
+      self.findIndex((t) => t[filterProperty] === value[filterProperty]),
   );
