@@ -1,6 +1,7 @@
 import React from 'react';
 import { MovieProps } from '../movies-list/MoviesList';
 import styles from './Card.module.css';
+import { Chips } from '..';
 
 interface CardProps {
   movie: MovieProps;
@@ -18,9 +19,7 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
           }}
           className={styles.container}>
           <div className={styles.genresWrapper}>
-            {movie.genres?.map((genre) => (
-              <p>{genre}</p>
-            ))}
+            <Chips chips={movie.genres} />
           </div>
 
           <div className={styles.overviewOverlay}>

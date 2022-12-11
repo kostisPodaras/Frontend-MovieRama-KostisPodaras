@@ -22,12 +22,3 @@
 .text {
   margin-top: 6px;
 }
-
-.genresWrapper {
-  display: flex;
-  gap: 6px;
-}
-
-.genresWrapper > p {
-  color: red;
-}
