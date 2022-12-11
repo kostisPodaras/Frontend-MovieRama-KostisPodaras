@@ -6,6 +6,7 @@ import './App.css';
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
+  const [query, setQuery] = useState('');
 
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
   const lastMovieRef = useCallback(
@@ -33,7 +34,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Search />
+      <Search query={query} setQuery={setQuery} />
       <MoviesList movies={results} lastMovieRef={lastMovieRef} />
     </div>
   );
