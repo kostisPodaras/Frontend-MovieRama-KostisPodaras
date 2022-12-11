@@ -1,5 +1,8 @@
+import { useMemo } from 'react';
 import { Card } from '../card/Card';
 import styles from './MoviesList.module.css';
+import useGenres from '../../hooks/useGenres';
+import { arrayOfObjectsToDictionary } from '../../utils';
 export interface MovieProps {
   poster_path: string;
   title: string;
@@ -16,13 +19,31 @@ interface MoviesListProps {
 }
 
 export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
-  if (movies.length === 0) {
+  const { genres } = useGenres();
+  const hasGenres = genres.length > 0;
+
+  // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. It gets pretty heavy performance wise
+  const genresDictionary = useMemo(
+    () => arrayOfObjectsToDictionary(genres, 'id'),
+    [hasGenres],
+  );
+
+  if (movies.length === 0 || !hasGenres) {
     return null;
   }
 
+  const moviesWithGenres = movies.map((movie) => {
+    const movieGenres = movie.genre_ids.map((id) => genresDictionary[id].name);
+
+    return {
+      ...movie,
+      genres: movieGenres,
+    };
+  });
+
   return (
     <div className={styles.container}>
-      {movies.map((movie, i) => {
+      {moviesWithGenres.map((movie, i) => {
         // If the element is the last one, we add a ref to it in order to observe it and trigger a new request when its getting into the viewport
         const isLastElement = movies.length === i + 1;
 

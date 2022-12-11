@@ -1,21 +1,11 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
 import useMovies from './hooks/useMovies';
-import useGenres from './hooks/useGenres';
 import { MoviesList, Search } from './components';
-import { arrayOfObjectsToDictionary } from './utils';
 import './App.css';
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
-  const { genres, genresIsError } = useGenres();
-
-  // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. After a while it will get pretty heavy
-  const genresDictionary = useMemo(
-    () => arrayOfObjectsToDictionary(genres, 'id'),
-    // ASK Jim for this. I want to call this ONLY when genres data are fetched, so is this a smart way?
-    [genres.length > 0],
-  );
 
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
   const lastMovieRef = useCallback(
@@ -37,23 +27,14 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
-  if (isError || genresIsError) {
+  if (isError) {
     return <h1>Something went wrong</h1>;
   }
-
-  const moviesWithGenres = results.map((movie) => {
-    const movieGenres = movie.genre_ids.map((id) => genresDictionary[id]?.name);
-
-    return {
-      ...movie,
-      genres: movieGenres,
-    };
-  });
 
   return (
     <div className="App">
       <Search />
-      <MoviesList movies={moviesWithGenres} lastMovieRef={lastMovieRef} />
+      <MoviesList movies={results} lastMovieRef={lastMovieRef} />
     </div>
   );
 };
