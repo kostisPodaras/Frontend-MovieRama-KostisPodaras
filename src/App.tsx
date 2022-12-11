@@ -42,7 +42,7 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
-  console.log('isLoading', isLoading);
+  console.log('isLoading', theaterMoviesIsLoading);
 
   if (isError) {
     return <h1>Something went wrong</h1>;
@@ -51,10 +51,10 @@ const App = () => {
   return (
     <div className="App">
       <Search query={query} setQuery={setQuery} />
-
       {queryIsLoading && <Spinner />}
 
       <MoviesList movies={results} lastMovieRef={lastMovieRef} />
+      {queryIsLoading && results.length > 0 && <Spinner />}
     </div>
   );
 };

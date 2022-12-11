@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MovieProps } from '../components/movies-list/MoviesList';
 import { getUniqueElements } from '../utils';
-import { getMovies, searchMovies } from '../models';
+import { getMovies } from '../models';
 
 const useMovies = (pageNumber = 1, query: string) => {
   const [results, setResults] = useState<MovieProps[]>([]);
