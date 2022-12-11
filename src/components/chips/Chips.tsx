@@ -11,8 +11,8 @@ export const Chips = ({ chips }: ChipsProps) => {
 
   return (
     <div className={styles.container}>
-      {chips.map((element) => (
-        <div>
+      {chips.map((element, index) => (
+        <div key={`genre-${index}`}>
           <p>{element}</p>
         </div>
       ))}
