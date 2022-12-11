@@ -8,7 +8,6 @@ interface CardProps {
 
 export const Card = React.forwardRef<HTMLInputElement, CardProps>(
   ({ movie }, ref) => {
-    console.log('movie', movie);
     return (
       <div ref={ref || null}>
         <img
@@ -16,7 +15,14 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
           alt="movie"
           className={styles.posterImage}
         />
-        <p className={styles.title}>{movie.title}</p>
+        <p className={styles.text}>
+          {movie.title} | {movie.release_date.split('-')[0]}
+        </p>
+
+        <p className={styles.text}>{movie.vote_average}</p>
+        <p className={styles.text}>{movie.overview}</p>
+
+        {/* TODO ADD GENRES HERE AND TO TYPE OF MOVIE (somehow extend it) */}
       </div>
     );
   },
