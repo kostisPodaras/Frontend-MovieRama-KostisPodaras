@@ -1,15 +1,26 @@
-import { useState, useCallback, useRef, useMemo } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import useMovies from './hooks/useMovies';
+import useSearchMovies from './hooks/useSearchMovies';
 import { MoviesList, Search } from './components';
 import './App.css';
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [query, setQuery] = useState('');
-  const { results, isError, isLoading, hasNextPage } = useMovies(
-    pageNumber,
-    query,
-  );
+  const {
+    theaterMovies,
+    theaterMoviesIsError,
+    theaterMoviesIsLoading,
+    theaterMoviesHasNextPage,
+  } = useMovies(pageNumber);
+
+  const { queryResults, queryIsError, queryIsLoading, queryHasNextPage } =
+    useSearchMovies(pageNumber, query);
+
+  const results = query ? queryResults : theaterMovies;
+  const isError = query ? queryIsError : theaterMoviesIsError;
+  const hasNextPage = query ? queryHasNextPage : theaterMoviesHasNextPage;
+  const isLoading = query ? queryIsLoading : theaterMoviesIsLoading;
 
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
   const lastMovieRef = useCallback(
