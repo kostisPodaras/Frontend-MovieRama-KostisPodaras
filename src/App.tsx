@@ -12,7 +12,7 @@ const App = () => {
     theaterMoviesIsError,
     theaterMoviesIsLoading,
     theaterMoviesHasNextPage,
-  } = useMovies(pageNumber);
+  } = useMovies(pageNumber, query);
 
   const { queryResults, queryIsError, queryIsLoading, queryHasNextPage } =
     useSearchMovies(pageNumber, query);

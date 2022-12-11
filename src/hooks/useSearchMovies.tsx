@@ -8,29 +8,43 @@ const useSearchMovies = (pageNumber = 1, query: string) => {
   const [queryIsError, setQueryIsError] = useState(false);
   const [queryIsLoading, setQueryIsLoading] = useState(false);
   const [queryHasNextPage, setQueryHasNextPage] = useState(false);
+  const [prevQuery, setPrevQuery] = useState(query);
 
   useEffect(() => {
-    // Otan allazei to query, setQueryResults(data). Kai otan allazei to pageNumber tote setQueryResults(da[...prev, ...data]ta)
     if (query) {
       setQueryIsLoading(true);
       setQueryIsError(false);
 
-      searchMovies(pageNumber, query)
-        .then(({ data, isLastPage }) => {
-          setQueryResults((prev: MovieProps[]) => {
-            // Filtering out duplicate movies, seems pages from API contain duplicate movies
-            const uniqueMovies = getUniqueElements([...prev, ...data], 'id');
+      const isQueryChanged = query !== prevQuery;
 
-            return uniqueMovies;
+      const debounce = setTimeout(() => {
+        // When we type again, we reset the pageNumber. (Bug was If we scroll to bottom and go to page 2, then scrolling back up and typing, will search th results of page 2)
+        searchMovies(isQueryChanged ? 1 : pageNumber, query)
+          .then(({ data, isLastPage }) => {
+            setQueryResults((prev: MovieProps[]) => {
+              // Filtering out duplicate movies, seems pages from API contain duplicate movies
+              const uniqueMovies =
+                // If query change, show only the new movies without the prev movies
+                isQueryChanged
+                  ? getUniqueElements(data, 'id')
+                  : getUniqueElements([...prev, ...data], 'id');
+
+              return uniqueMovies;
+            });
+            setPrevQuery(query);
+            setQueryHasNextPage(!isLastPage);
+            setQueryIsLoading(false);
+          })
+          .catch((error) => {
+            console.warn(error);
+            setQueryIsLoading(false);
+            setQueryIsError(true);
           });
-          setQueryHasNextPage(!isLastPage);
-          setQueryIsLoading(false);
-        })
-        .catch((error) => {
-          console.warn(error);
-          setQueryIsLoading(false);
-          setQueryIsError(true);
-        });
+      }, 1000);
+
+      return () => {
+        clearTimeout(debounce);
+      };
     }
   }, [pageNumber, query]);
 
