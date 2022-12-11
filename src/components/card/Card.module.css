@@ -1,9 +1,21 @@
-.overviewWrapper {
+.container {
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 30vh;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+.overviewOverlay {
   padding: 8px;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  bottom: 0;
   font-size: 14px;
 }
 
@@ -11,17 +23,11 @@
   margin-top: 6px;
 }
 
-.posterImage {
-  width: 100%;
-  border-radius: 16px;
-  object-fit: cover;
-  cursor: pointer;
+.genresWrapper {
+  display: flex;
+  gap: 6px;
 }
 
-.posterWrapper {
-  position: relative;
-  color: white;
-  border-radius: 16px;
-  overflow: hidden;
-  height: 30vh;
+.genresWrapper > p {
+  color: red;
 }

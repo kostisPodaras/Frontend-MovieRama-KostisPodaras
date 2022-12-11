@@ -8,23 +8,30 @@ interface CardProps {
 
 export const Card = React.forwardRef<HTMLInputElement, CardProps>(
   ({ movie }, ref) => {
+    console.log(movie);
+
     return (
       <div ref={ref || null}>
-        <div className={styles.posterWrapper}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-            className={styles.posterImage}
-          />
+        <div
+          style={{
+            backgroundImage: `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`,
+          }}
+          className={styles.container}>
+          <div className={styles.genresWrapper}>
+            {movie.genres?.map((genre) => (
+              <p>{genre}</p>
+            ))}
+          </div>
 
-          <div className={styles.overviewWrapper} style={{}}>
+          <div className={styles.overviewOverlay}>
             <p>{movie.overview}</p>
           </div>
         </div>
 
         <p className={styles.text}>
-          {movie.title} | {movie.release_date?.split('-')[0]}
+          {movie.title} | {movie.release_date?.split('-')[0] || 'Uknown'}
         </p>
+
         <p className={styles.text}>{movie.vote_average}</p>
       </div>
     );

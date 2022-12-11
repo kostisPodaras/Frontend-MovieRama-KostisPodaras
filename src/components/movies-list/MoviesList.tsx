@@ -11,6 +11,7 @@ export interface MovieProps {
   vote_average: string;
   overview: string;
   id: string;
+  genres?: string[];
 }
 
 interface MoviesListProps {
