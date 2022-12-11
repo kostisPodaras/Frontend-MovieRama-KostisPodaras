@@ -8,6 +8,7 @@ const useMovies = (pageNumber = 1, query: string) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
+  const [prevQuery, setPrevQuery] = useState(query);
 
   useEffect(() => {
     // Condition so we dont make requests for now_playing_movies when we are on search and pageNumber change
@@ -15,7 +16,9 @@ const useMovies = (pageNumber = 1, query: string) => {
       setIsLoading(true);
       setIsError(false);
 
-      getMovies(pageNumber)
+      const isQueryChanged = query !== prevQuery;
+
+      getMovies(isQueryChanged ? 1 : pageNumber)
         .then(({ data, isLastPage }) => {
           setResults((prev: MovieProps[]) => {
             // Filtering out duplicate movies, seems pages from API contain duplicate movies
