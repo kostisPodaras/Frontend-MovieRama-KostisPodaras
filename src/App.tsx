@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
-import { MoviesList } from './components';
 import useMovies from './hooks/useMovies';
 import useGenres from './hooks/useGenres';
+import { MoviesList, Search } from './components';
 import { arrayOfObjectsToDictionary } from './utils';
 import './App.css';
 
@@ -52,6 +52,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Search />
       <MoviesList movies={moviesWithGenres} lastMovieRef={lastMovieRef} />
     </div>
   );

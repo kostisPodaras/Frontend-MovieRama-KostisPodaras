@@ -1,0 +1,13 @@
+.container {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  padding: 0.71429rem;
+  border-radius: 6px;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 600px;
+}
