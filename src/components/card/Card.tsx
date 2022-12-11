@@ -16,7 +16,7 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
           className={styles.posterImage}
         />
         <p className={styles.text}>
-          {movie.title} | {movie.release_date.split('-')[0]}
+          {movie.title} | {movie.release_date?.split('-')[0]}
         </p>
 
         <p className={styles.text}>{movie.vote_average}</p>

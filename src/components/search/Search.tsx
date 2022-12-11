@@ -1,17 +1,6 @@
 import styles from './Search.module.css';
 
 export const Search = ({ query, setQuery }) => {
-  // useEffect(() => {
-  //   const fetchMovies = async () => {
-  //     const response = await fetch(API_SEARCH_MOVIES(input, 1));
-  //     const data = await response.json();
-
-  //     console.log(data);
-  //   };
-
-  //   input && fetchMovies();
-  // }, [input]);
-
   return (
     <div className={styles.container}>
       <input

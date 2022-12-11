@@ -5,8 +5,11 @@ import './App.css';
 
 const App = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const { results, isError, isLoading, hasNextPage } = useMovies(pageNumber);
   const [query, setQuery] = useState('');
+  const { results, isError, isLoading, hasNextPage } = useMovies(
+    pageNumber,
+    query,
+  );
 
   const intersectionObserver = useRef<IntersectionObserver | null>(null);
   const lastMovieRef = useCallback(
