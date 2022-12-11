@@ -1,3 +1,16 @@
+.overviewWrapper {
+  padding: 8px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+}
+
+.text {
+  margin-top: 6px;
+}
+
 .posterImage {
   width: 100%;
   border-radius: 16px;
@@ -5,6 +18,10 @@
   cursor: pointer;
 }
 
-.text {
-  margin-top: 6px;
+.posterWrapper {
+  position: relative;
+  color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 30vh;
 }
