@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MovieProps } from '../components/movies-list/MoviesList';
 import { getUniqueElements } from '../utils';
+import { API_NOW_PLAYING } from '../API';
 
 const getMovies = async (
   pageNumber: number,
@@ -8,9 +9,7 @@ const getMovies = async (
   data: MovieProps[];
   isLastPage: boolean;
 }> => {
-  const response = await fetch(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US&page=${pageNumber}`,
-  );
+  const response = await fetch(API_NOW_PLAYING(pageNumber));
   const data = await response.json();
 
   const isLastPage = data.page === data.total_pages;

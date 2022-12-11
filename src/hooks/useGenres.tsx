@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { API_GENRES } from '../API';
 
 interface Genre {
   id: number;
@@ -19,9 +20,7 @@ const useGenres = (): {
       setGenresIsLoading(true);
 
       const fetchGenres = async () => {
-        const response = await fetch(
-          'https://api.themoviedb.org/3/genre/movie/list?api_key=bc50218d91157b1ba4f142ef7baaa6a0&language=en-US',
-        );
+        const response = await fetch(API_GENRES);
         const data = await response.json();
 
         setGenres(data.genres);
