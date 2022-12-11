@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import useMovies from './hooks/useMovies';
 import useSearchMovies from './hooks/useSearchMovies';
-import { MoviesList, Search } from './components';
+import { MoviesList, Search, Spinner } from './components';
 import './App.css';
 
 const App = () => {
@@ -42,6 +42,8 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
+  console.log('isLoading', isLoading);
+
   if (isError) {
     return <h1>Something went wrong</h1>;
   }
@@ -49,6 +51,9 @@ const App = () => {
   return (
     <div className="App">
       <Search query={query} setQuery={setQuery} />
+
+      {queryIsLoading && <Spinner />}
+
       <MoviesList movies={results} lastMovieRef={lastMovieRef} />
     </div>
   );

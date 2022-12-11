@@ -8,11 +8,12 @@ interface CardProps {
 
 export const Card = React.forwardRef<HTMLInputElement, CardProps>(
   ({ movie }, ref) => {
+    console.log(movie);
     return (
       <div ref={ref || null}>
         <img
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt="movie"
+          alt={movie.title}
           className={styles.posterImage}
         />
         <p className={styles.text}>
