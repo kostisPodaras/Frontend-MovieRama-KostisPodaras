@@ -12,6 +12,7 @@ interface Video {
   name: string;
   site: string;
   type: string;
+  official: boolean;
 }
 
 interface Response extends Movie {

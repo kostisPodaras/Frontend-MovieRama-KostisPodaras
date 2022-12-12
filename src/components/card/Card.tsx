@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import { Movie } from 'types';
+import { Chips, Modal, MovieDetails } from 'components';
 
 import styles from './Card.module.css';
-import { Chips, Modal, MovieDetails } from '..';
 
 interface CardProps {
   movie: Movie;

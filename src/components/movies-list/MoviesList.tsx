@@ -1,11 +1,11 @@
 import { memo, useMemo } from 'react';
 
 import { Movie } from 'types';
+import { Card } from 'components';
+import { useGenres } from 'hooks';
+import { arrayOfObjectsToDictionary } from 'utils';
 
-import { Card } from '../card/Card';
-import { useGenres } from '../../hooks';
 import styles from './MoviesList.module.css';
-import { arrayOfObjectsToDictionary } from '../../utils';
 
 interface MoviesListProps {
   movies: Movie[];
