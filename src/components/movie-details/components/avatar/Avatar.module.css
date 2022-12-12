@@ -1,0 +1,24 @@
+.avatar {
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+  margin-right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  font-size: 12px;
+}
+
+.content {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+}

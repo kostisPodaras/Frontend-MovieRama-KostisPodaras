@@ -54,12 +54,12 @@ const App = () => {
   return (
     <div className="App">
       <Search query={query} setQuery={setQuery} />
-      {queryIsLoading && <Spinner />}
+      {isLoading && <Spinner />}
 
       <MoviesList movies={movies} lastMovieRef={lastMovieRef} />
 
       <ScrollToTop />
-      {queryIsLoading && results.length > 0 && <Spinner />}
+      {isLoading && results.length > 0 && <Spinner />}
     </div>
   );
 };
