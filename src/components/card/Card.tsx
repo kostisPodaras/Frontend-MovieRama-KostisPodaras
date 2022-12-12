@@ -9,7 +9,6 @@ interface CardProps {
 
 export const Card = React.forwardRef<HTMLInputElement, CardProps>(
   ({ movie }, ref) => {
-    console.log(movie);
     const [isOpen, setIsOpen] = useState(false);
 
     return (

@@ -42,8 +42,6 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
-  console.log('isLoading', theaterMoviesIsLoading);
-
   if (isError) {
     return <h1>Something went wrong</h1>;
   }

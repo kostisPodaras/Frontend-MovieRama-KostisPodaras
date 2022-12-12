@@ -1,16 +1,26 @@
-import { useEffect } from 'react';
 import { useMovieDetails } from '../../hooks';
+import { Spinner } from '..';
 
 interface MovieDetailsProps {
   movieId: string;
 }
 
 export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
-  const { movieDetails } = useMovieDetails(movieId);
+  const { movieDetails, isLoading, isError } = useMovieDetails(movieId);
+
+  if (isError) {
+    return <p>Something went wrong</p>;
+  }
 
   return (
-    <div>
-      <p>Details</p>
-    </div>
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <p>Details</p>
+        </div>
+      )}
+    </>
   );
 };
