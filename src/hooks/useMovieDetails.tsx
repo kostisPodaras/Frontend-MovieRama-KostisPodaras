@@ -2,9 +2,20 @@ import { useEffect, useState } from 'react';
 import { getMovieDetails } from '../services';
 import { MovieProps } from '../components/movies-list/MoviesList';
 
+interface Video {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+}
 interface Response extends MovieProps {
   // Add reviews, videos, similar
-  videos: any[];
+  videos: {
+    results: Video[];
+  };
 }
 
 export const useMovieDetails = (movieId: string) => {
