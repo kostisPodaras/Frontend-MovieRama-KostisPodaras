@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MovieProps } from '../movies-list/MoviesList';
 import styles from './Card.module.css';
-import { Chips, Modal } from '..';
+import { Chips, Modal, MovieDetails } from '..';
 
 interface CardProps {
   movie: MovieProps;
@@ -36,7 +36,7 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
           <p className={styles.text}>{movie.vote_average}</p>
         </div>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <h1>test</h1>
+          <MovieDetails />
         </Modal>
       </>
     );

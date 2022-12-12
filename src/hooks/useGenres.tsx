@@ -6,7 +6,7 @@ interface Genre {
   name: 'string';
 }
 
-const useGenres = (): {
+export const useGenres = (): {
   genres: Genre[];
   genresIsError: boolean;
   genresIsLoading: boolean;
@@ -39,5 +39,3 @@ const useGenres = (): {
     genresIsError,
   };
 };
-
-export default useGenres;

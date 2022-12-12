@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
+
 import { Card } from '../card/Card';
+import { useGenres } from '../../hooks';
 import styles from './MoviesList.module.css';
-import useGenres from '../../hooks/useGenres';
 import { arrayOfObjectsToDictionary } from '../../utils';
 export interface MovieProps {
   poster_path: string;

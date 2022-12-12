@@ -3,7 +3,7 @@ import { MovieProps } from '../components/movies-list/MoviesList';
 import { getUniqueElements } from '../utils';
 import { getMovies } from '../models';
 
-const useMovies = (pageNumber = 1, query: string) => {
+export const useMovies = (pageNumber = 1, query: string) => {
   const [results, setResults] = useState<MovieProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -44,5 +44,3 @@ const useMovies = (pageNumber = 1, query: string) => {
     theaterMoviesHasNextPage: hasNextPage,
   };
 };
-
-export default useMovies;

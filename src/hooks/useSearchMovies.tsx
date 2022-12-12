@@ -3,7 +3,7 @@ import { MovieProps } from '../components/movies-list/MoviesList';
 import { getUniqueElements } from '../utils';
 import { searchMovies } from '../models';
 
-const useSearchMovies = (pageNumber = 1, query: string) => {
+export const useSearchMovies = (pageNumber = 1, query: string) => {
   const [queryResults, setQueryResults] = useState<MovieProps[]>([]);
   const [queryIsError, setQueryIsError] = useState(false);
   const [queryIsLoading, setQueryIsLoading] = useState(false);
@@ -55,5 +55,3 @@ const useSearchMovies = (pageNumber = 1, query: string) => {
     queryHasNextPage,
   };
 };
-
-export default useSearchMovies;

@@ -18,7 +18,6 @@ export const Modal = ({ isOpen, children, onClose }) => {
     <>
       <div onClick={onClose} className={styles.overlay}>
         <div onClick={(e) => e.stopPropagation()} className={styles.modal}>
-          <button onClick={onClose}>Close Modal</button>
           {children}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
-import useMovies from './hooks/useMovies';
-import useSearchMovies from './hooks/useSearchMovies';
+
 import { MoviesList, Search, Spinner } from './components';
+import { useSearchMovies, useMovies } from './hooks';
 import './App.css';
 
 const App = () => {
