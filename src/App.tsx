@@ -42,6 +42,7 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
+  // Using memo for referencial equality for the memoization of MoviesList
   const movies = useMemo(() => {
     return results;
   }, [JSON.stringify(results)]);
