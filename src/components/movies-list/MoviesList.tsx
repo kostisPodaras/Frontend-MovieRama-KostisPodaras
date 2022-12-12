@@ -1,22 +1,14 @@
 import { memo, useMemo } from 'react';
 
+import { Movie } from 'types';
+
 import { Card } from '../card/Card';
 import { useGenres } from '../../hooks';
 import styles from './MoviesList.module.css';
 import { arrayOfObjectsToDictionary } from '../../utils';
-export interface MovieProps {
-  poster_path: string;
-  title: string;
-  release_date: string;
-  genre_ids: number[];
-  vote_average: string;
-  overview: string;
-  id: string;
-  genres?: string[];
-}
 
 interface MoviesListProps {
-  movies: MovieProps[];
+  movies: Movie[];
   lastMovieRef: any;
 }
 

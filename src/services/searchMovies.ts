@@ -1,11 +1,12 @@
-import { MovieProps } from '../components/movies-list/MoviesList';
+import { Movie } from 'types';
+
 import { API_SEARCH_MOVIES } from '../API';
 
 export const searchMovies = async (
   pageNumber: number,
   query: string,
 ): Promise<{
-  data: MovieProps[];
+  data: Movie[];
   isLastPage: boolean;
 }> => {
   const response = await fetch(API_SEARCH_MOVIES(query, pageNumber));

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { MovieProps } from '../components/movies-list/MoviesList';
+
+import { Movie } from 'types';
+
 import { getUniqueElements } from '../utils';
 import { getMovies } from '../services';
 
 export const useMovies = (pageNumber = 1, query: string) => {
-  const [results, setResults] = useState<MovieProps[]>([]);
+  const [results, setResults] = useState<Movie[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [hasNextPage, setHasNextPage] = useState(false);
@@ -20,7 +22,7 @@ export const useMovies = (pageNumber = 1, query: string) => {
 
       getMovies(isQueryChanged ? 1 : pageNumber)
         .then(({ data, isLastPage }) => {
-          setResults((prev: MovieProps[]) => {
+          setResults((prev: Movie[]) => {
             // Filtering out duplicate movies, seems pages from API contain duplicate movies
             const uniqueMovies = getUniqueElements([...prev, ...data], 'id');
 

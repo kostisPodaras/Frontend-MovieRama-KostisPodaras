@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { MovieProps } from '../movies-list/MoviesList';
+
+import { Movie } from 'types';
+
 import styles from './Card.module.css';
 import { Chips, Modal, MovieDetails } from '..';
 
 interface CardProps {
-  movie: MovieProps;
+  movie: Movie;
 }
 
 export const Card = React.forwardRef<HTMLInputElement, CardProps>(

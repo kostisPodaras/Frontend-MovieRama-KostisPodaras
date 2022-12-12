@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+
+import { Review, Movie } from 'types';
+
 import { getMovieDetails } from '../services';
-import { MovieProps } from '../components/movies-list/MoviesList';
 
 interface Video {
   id: string;
@@ -11,10 +13,13 @@ interface Video {
   site: string;
   type: string;
 }
-interface Response extends MovieProps {
-  // Add reviews, videos, similar
+
+interface Response extends Movie {
   videos: {
     results: Video[];
+  };
+  reviews: {
+    results: Review[];
   };
 }
 

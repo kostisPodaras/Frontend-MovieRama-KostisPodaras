@@ -1,5 +1,5 @@
 import { useMovieDetails } from '../../hooks';
-import { VideoPlayer } from './components';
+import { VideoPlayer, Reviews } from './components';
 import { Spinner } from '..';
 
 interface MovieDetailsProps {
@@ -9,22 +9,22 @@ interface MovieDetailsProps {
 export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
   const { movieDetails, isLoading, isError } = useMovieDetails(movieId);
 
-  if (isError) {
-    return <p>Something went wrong</p>;
-  }
-
   if (!movieDetails) {
     return null;
   }
 
-  const { videos } = movieDetails;
+  if (isError) {
+    return <p>Something went wrong</p>;
+  }
+
+  const { videos, reviews } = movieDetails;
 
   // Dont really like finding the trailer via name, but I could not find any other property that indicates the trailer
   const trailer = videos.results.find(
     (video) => video.name === 'Official Trailer',
   );
 
-  console.log('trailer', trailer);
+  console.log('reviews', reviews);
 
   return (
     <>
@@ -33,7 +33,7 @@ export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
       ) : (
         <div>
           <VideoPlayer id={trailer?.key} />
-          <p>Details</p>
+          <Reviews reviews={reviews.results} />
         </div>
       )}
     </>

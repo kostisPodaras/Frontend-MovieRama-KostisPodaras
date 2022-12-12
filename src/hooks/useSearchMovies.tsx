@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { MovieProps } from '../components/movies-list/MoviesList';
+
+import { Movie } from 'types';
+
 import { getUniqueElements } from '../utils';
 import { searchMovies } from '../services';
 
 export const useSearchMovies = (pageNumber = 1, query: string) => {
-  const [queryResults, setQueryResults] = useState<MovieProps[]>([]);
+  const [queryResults, setQueryResults] = useState<Movie[]>([]);
   const [queryIsError, setQueryIsError] = useState(false);
   const [queryIsLoading, setQueryIsLoading] = useState(false);
   const [queryHasNextPage, setQueryHasNextPage] = useState(false);
@@ -21,7 +23,7 @@ export const useSearchMovies = (pageNumber = 1, query: string) => {
         // When we type again, we reset the pageNumber. (Bug was If we scroll to bottom and go to page 2, then scrolling back up and typing, will search th results of page 2)
         searchMovies(isQueryChanged ? 1 : pageNumber, query)
           .then(({ data, isLastPage }) => {
-            setQueryResults((prev: MovieProps[]) => {
+            setQueryResults((prev: Movie[]) => {
               // Filtering out duplicate movies, seems pages from API contain duplicate movies
               const uniqueMovies =
                 // If query change, show only the new movies without the prev movies

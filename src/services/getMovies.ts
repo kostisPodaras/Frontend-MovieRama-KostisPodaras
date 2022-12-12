@@ -1,10 +1,11 @@
-import { MovieProps } from '../components/movies-list/MoviesList';
+import { Movie } from 'types';
+
 import { API_NOW_PLAYING } from '../API';
 
 export const getMovies = async (
   pageNumber: number,
 ): Promise<{
-  data: MovieProps[];
+  data: Movie[];
   isLastPage: boolean;
 }> => {
   const response = await fetch(API_NOW_PLAYING(pageNumber));
