@@ -1,6 +1,6 @@
-import { useState, useCallback, useRef, useMemo } from 'react';
+import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 
-import { MoviesList, Search, Spinner } from './components';
+import { MoviesList, Search, Spinner, ScrollToTop } from './components';
 import { useSearchMovies, useMovies } from './hooks';
 import './App.css';
 
@@ -57,6 +57,8 @@ const App = () => {
       {queryIsLoading && <Spinner />}
 
       <MoviesList movies={movies} lastMovieRef={lastMovieRef} />
+
+      <ScrollToTop />
       {queryIsLoading && results.length > 0 && <Spinner />}
     </div>
   );
