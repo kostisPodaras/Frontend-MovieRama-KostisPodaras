@@ -7,7 +7,6 @@ interface MovieDetailsProps {
 
 export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
   const { movieDetails, isLoading, isError } = useMovieDetails(movieId);
-
   if (isError) {
     return <p>Something went wrong</p>;
   }

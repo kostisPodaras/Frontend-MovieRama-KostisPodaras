@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
 import { Card } from '../card/Card';
 import { useGenres } from '../../hooks';
@@ -20,11 +20,9 @@ interface MoviesListProps {
   lastMovieRef: any;
 }
 
-export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
+const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   const { genres } = useGenres();
   const hasGenres = genres.length > 0;
-
-  console.log('CUT RENDERS ON KEYSTROKES');
 
   // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. It gets pretty heavy performance wise
   const genresDictionary = useMemo(
@@ -62,3 +60,5 @@ export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
     </div>
   );
 };
+
+export const MoviesList = memo(List);

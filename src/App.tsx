@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useMemo } from 'react';
 
 import { MoviesList, Search, Spinner } from './components';
 import { useSearchMovies, useMovies } from './hooks';
@@ -42,6 +42,10 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
+  const movies = useMemo(() => {
+    return results;
+  }, [JSON.stringify(results)]);
+
   if (isError) {
     return <h1>Something went wrong</h1>;
   }
@@ -51,7 +55,7 @@ const App = () => {
       <Search query={query} setQuery={setQuery} />
       {queryIsLoading && <Spinner />}
 
-      <MoviesList movies={results} lastMovieRef={lastMovieRef} />
+      <MoviesList movies={movies} lastMovieRef={lastMovieRef} />
       {queryIsLoading && results.length > 0 && <Spinner />}
     </div>
   );

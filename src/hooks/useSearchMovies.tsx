@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MovieProps } from '../components/movies-list/MoviesList';
 import { getUniqueElements } from '../utils';
-import { searchMovies } from '../models';
+import { searchMovies } from '../services';
 
 export const useSearchMovies = (pageNumber = 1, query: string) => {
   const [queryResults, setQueryResults] = useState<MovieProps[]>([]);
@@ -40,7 +40,7 @@ export const useSearchMovies = (pageNumber = 1, query: string) => {
             setQueryIsLoading(false);
             setQueryIsError(true);
           });
-      }, 1000);
+      }, 800);
 
       return () => {
         clearTimeout(debounce);

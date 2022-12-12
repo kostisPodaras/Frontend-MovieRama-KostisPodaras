@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
-import { getMovieDetails } from '../models';
+import { getMovieDetails } from '../services';
+import { MovieProps } from '../components/movies-list/MoviesList';
+
+interface Response extends MovieProps {
+  // Add reviews, videos, similar
+  videos: any[];
+}
 
 export const useMovieDetails = (movieId: string) => {
-  const [movieDetails, setMovieDetails] = useState();
+  const [movieDetails, setMovieDetails] = useState<Response>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
