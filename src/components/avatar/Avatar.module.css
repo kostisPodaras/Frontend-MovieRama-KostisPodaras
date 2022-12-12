@@ -9,13 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: red;
+  background-color: #3498db;
+  color: white;
   font-size: 12px;
-}
-
-.content {
-  font-size: 12px;
-  margin-top: 8px;
 }
 
 .nameWrapper {

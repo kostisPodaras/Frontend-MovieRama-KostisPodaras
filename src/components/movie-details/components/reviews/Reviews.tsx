@@ -1,10 +1,10 @@
-import { Review } from 'types';
-import { Avatar } from '..';
+import { Review as ReviewType } from 'types';
+import { Review } from '..';
 
 import styles from './Reviews.module.css';
 
 interface ReviewsProps {
-  reviews: Review[];
+  reviews: ReviewType[];
   maxReviewsShown: number;
 }
 
@@ -19,7 +19,7 @@ export const Reviews = ({ reviews, maxReviewsShown = 2 }: ReviewsProps) => {
     <div>
       <h4 className={styles.reviewsTitle}>Reviews</h4>
       {reviewsToShow.map(({ content, author_details, id }) => (
-        <Avatar
+        <Review
           key={id}
           name={author_details.username}
           image={author_details.avatar_path}

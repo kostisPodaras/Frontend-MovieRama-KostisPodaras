@@ -1,5 +1,6 @@
 export * from './modal/Modal';
 export * from './card/Card';
+export * from './avatar/Avatar';
 export * from './chips/Chips';
 export * from './search/Search';
 export * from './spinner/Spinner';
