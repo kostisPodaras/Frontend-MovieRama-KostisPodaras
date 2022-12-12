@@ -24,7 +24,7 @@ export const MoviesList = ({ movies, lastMovieRef }: MoviesListProps) => {
   const { genres } = useGenres();
   const hasGenres = genres.length > 0;
 
-  console.log('RENDER');
+  console.log('CUT RENDERS ON KEYSTROKES');
 
   // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. It gets pretty heavy performance wise
   const genresDictionary = useMemo(

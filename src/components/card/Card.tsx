@@ -36,7 +36,7 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
           <p className={styles.text}>{movie.vote_average}</p>
         </div>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <MovieDetails />
+          <MovieDetails movieId={movie.id} />
         </Modal>
       </>
     );
