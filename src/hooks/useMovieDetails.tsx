@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { Review, Movie } from 'types';
+import { Review, Movie, Similar } from 'types';
 
 import { getMovieDetails } from '../services';
 
 interface Video {
   id: string;
-  iso_639_1: string;
-  iso_3166_1: string;
   key: string;
   name: string;
   site: string;
@@ -21,6 +19,9 @@ interface Response extends Movie {
   };
   reviews: {
     results: Review[];
+  };
+  similar: {
+    results: Similar[];
   };
 }
 

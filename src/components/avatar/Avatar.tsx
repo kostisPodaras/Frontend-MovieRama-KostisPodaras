@@ -6,7 +6,7 @@ interface AvatarProps {
 }
 
 export const Avatar = ({ name, image }: AvatarProps) => {
-  const hasAvatarImage = !image.includes('gravatar');
+  const hasAvatarImage = !image?.includes('gravatar');
   const backgroundImage = hasAvatarImage
     ? `url(https://image.tmdb.org/t/p/w500${image})`
     : 'unset';

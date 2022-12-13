@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 20px;
+}
+
+.image {
+  height: auto;
+  width: 200px;
+  border-radius: 16px;
+}
+
+.leftSection {
+  height: auto;
+  width: 200px;
+  border-radius: 16px;
+}
+
+.rightSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.rightSection span {
+  font-weight: bold;
+}

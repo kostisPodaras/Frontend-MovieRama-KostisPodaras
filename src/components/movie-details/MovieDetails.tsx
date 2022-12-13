@@ -1,7 +1,7 @@
 import { useMovieDetails } from 'hooks';
 import { Spinner } from 'components';
 
-import { VideoPlayer, Reviews } from './components';
+import { VideoPlayer, Reviews, SimilarMovies } from './components';
 
 interface MovieDetailsProps {
   movieId: string;
@@ -9,8 +9,6 @@ interface MovieDetailsProps {
 
 export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
   const { movieDetails, isLoading, isError } = useMovieDetails(movieId);
-
-  console.log('movieDetails', movieDetails);
 
   if (!movieDetails) {
     return null;
@@ -35,6 +33,10 @@ export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
         <div>
           <VideoPlayer id={trailer?.key || videos.results?.[0]?.key} />
           <Reviews reviews={reviews.results} maxReviewsShown={2} />
+          <SimilarMovies
+            movies={movieDetails.similar.results}
+            maxMoviesShown={6}
+          />
         </div>
       )}
     </>

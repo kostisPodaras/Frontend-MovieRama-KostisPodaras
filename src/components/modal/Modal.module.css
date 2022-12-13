@@ -24,3 +24,7 @@
   max-height: 80vh;
   overflow: auto;
 }
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
