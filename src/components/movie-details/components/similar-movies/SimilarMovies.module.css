@@ -26,10 +26,16 @@
 
 .rightSection span {
   font-weight: bold;
+  margin-left: 6px;
 }
 
 .title {
   margin: 8px 0;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
 }
 
 @media (width <= 768px) {

@@ -6,7 +6,7 @@ interface RatingStar {
 
 export const RatingStar = ({ rating }: RatingStar) => (
   <div
-    className={`${rating > 6 ? styles.aboveAverage : styles.belowAverage} ${
+    className={`${rating > 6.5 ? styles.aboveAverage : styles.belowAverage} ${
       styles.rating
     }`}
   />

@@ -1,4 +1,6 @@
 import { Similar } from 'types';
+import { RatingStar } from 'components';
+
 import styles from './SimilarMovies.module.css';
 
 interface SimilarMoviesProps {
@@ -31,11 +33,11 @@ export const SimilarMovies = ({
 
             <div className={styles.rightSection}>
               <p>{movie.overview}</p>
-              <p>
-                Average of {movie.vote_average.toFixed(1)} (
-                <span>{movie.vote_count}</span>
-                votes)
-              </p>
+
+              <div className={styles.rating}>
+                <RatingStar rating={movie.vote_average} />
+                <span>{movie.vote_count} votes</span>
+              </div>
             </div>
           </div>
         );
