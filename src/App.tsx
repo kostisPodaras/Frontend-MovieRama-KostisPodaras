@@ -42,7 +42,7 @@ const App = () => {
     [isLoading, hasNextPage],
   );
 
-  // Using memo for referencial equality for the memoization of MoviesList
+  // Using memo for referencial equality for the memoization of MoviesList. Each keystroke triggers a re-render and MoviesList is a "heavy" component.
   const movies = useMemo(() => {
     return results;
   }, [JSON.stringify(results)]);

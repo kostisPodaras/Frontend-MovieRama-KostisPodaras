@@ -16,6 +16,8 @@ export const SimilarMovies = ({
 
   return (
     <div>
+      <h4 className={styles.title}>Similar movies</h4>
+
       {similarMovies.map((movie) => {
         return (
           <div key={movie.id} className={styles.container}>

@@ -27,3 +27,24 @@
 .rightSection span {
   font-weight: bold;
 }
+
+.title {
+  margin: 8px 0;
+}
+
+@media (width <= 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .leftSection {
+    width: 100%;
+  }
+
+  .image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
+}
