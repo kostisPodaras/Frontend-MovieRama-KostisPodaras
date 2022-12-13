@@ -22,3 +22,12 @@
 .text {
   margin-top: 6px;
 }
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating > p {
+  margin-left: 4px;
+}

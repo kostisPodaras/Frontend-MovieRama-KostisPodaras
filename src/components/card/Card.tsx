@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Movie } from 'types';
-import { Chips, Modal, MovieDetails } from 'components';
+import { Chips, Modal, MovieDetails, RatingStar } from 'components';
 
 import styles from './Card.module.css';
 
@@ -15,8 +15,9 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
 
     return (
       <>
-        <div onClick={() => setIsOpen(true)} ref={ref || null}>
+        <div ref={ref || null}>
           <div
+            onClick={() => setIsOpen(true)}
             style={{
               backgroundImage: movie.poster_path
                 ? `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
@@ -36,7 +37,10 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
             {movie.title} | {movie.release_date?.split('-')[0] || 'Uknown'}
           </p>
 
-          <p className={styles.text}>{movie.vote_average}</p>
+          <div className={styles.rating}>
+            <RatingStar rating={movie.vote_average} />
+            <p>{movie.vote_average}</p>
+          </div>
         </div>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
           <MovieDetails movieId={movie.id} />
