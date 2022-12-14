@@ -1,24 +1,35 @@
 import styles from './Chips.module.css';
 
 interface ChipsProps {
+  handleClick?: any;
+  stylesOverride?: string;
+  active?: string;
   chips?: {
-    value: string;
-    id: number;
+    name: string;
+    id: number | string;
   }[];
 }
 
-export const Chips = ({ chips }: ChipsProps) => {
+export const Chips = ({
+  chips,
+  handleClick,
+  active,
+  stylesOverride,
+}: ChipsProps) => {
   if (!chips) {
     return null;
   }
 
-  console.log('chips', chips);
-
   return (
-    <div className={styles.container}>
-      {chips.map(({ value, id }) => (
-        <div key={id}>
-          <p>{value}</p>
+    <div className={`${styles.container} ${stylesOverride}`}>
+      {chips.map(({ name, id }) => (
+        <div
+          className={`${styles.chip} ${active === name ? styles.active : ''}`}
+          onClick={() => {
+            handleClick && handleClick(name);
+          }}
+          key={id}>
+          <p className={styles.chipText}>{name}</p>
         </div>
       ))}
     </div>

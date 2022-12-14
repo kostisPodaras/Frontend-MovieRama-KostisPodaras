@@ -18,7 +18,7 @@ export interface Movie {
   overview: string;
   id: string;
   genres?: {
-    value: string;
+    name: string;
     id: number;
   }[];
 }

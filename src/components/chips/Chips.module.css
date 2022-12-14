@@ -5,8 +5,16 @@
   flex-wrap: wrap;
 }
 
-.container > div {
+.chipText {
+  text-transform: capitalize;
+}
+
+.chip {
   background-color: red;
   padding: 4px;
   border-radius: 6px;
+}
+
+.active {
+  background-color: #6b0808;
 }

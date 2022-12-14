@@ -14,8 +14,6 @@ export const SimilarMovies = ({
 }: SimilarMoviesProps) => {
   const similarMovies = movies.slice(0, maxMoviesShown);
 
-  console.log('similarMovies', similarMovies);
-
   return (
     <div>
       <h4 className={styles.title}>Similar movies</h4>

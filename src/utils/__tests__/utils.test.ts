@@ -112,15 +112,15 @@ describe('matchGenresIdsWithGenres function', () => {
         title: 'Black Adam',
         genre_ids: [12],
         id: 436270,
-        genres: [{ id: 12, value: 'Adventure' }],
+        genres: [{ id: 12, name: 'Adventure' }],
       },
       {
         title: 'The Woman King',
         genre_ids: [12, 14],
         id: 724495,
         genres: [
-          { id: 12, value: 'Adventure' },
-          { id: 14, value: 'Fantasy' },
+          { id: 12, name: 'Adventure' },
+          { id: 14, name: 'Fantasy' },
         ],
       },
       {
@@ -128,8 +128,8 @@ describe('matchGenresIdsWithGenres function', () => {
         genre_ids: [23, 12],
         id: 505642,
         genres: [
-          { id: 23, value: 'Thriller' },
-          { id: 12, value: 'Adventure' },
+          { id: 23, name: 'Thriller' },
+          { id: 12, name: 'Adventure' },
         ],
       },
     ]);

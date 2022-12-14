@@ -14,9 +14,8 @@ export const arrayOfObjectsToDictionary = (arr, property) =>
 
 export const matchGenresIdsWithGenres = (array, dictionary, key = 'genres') =>
   array.map((movie) => {
-    console.log('movieGenres', movie);
     const movieGenres = movie.genre_ids.map((id) => ({
-      value: dictionary[id].name,
+      name: dictionary[id]?.name,
       id,
     }));
 
@@ -25,3 +24,18 @@ export const matchGenresIdsWithGenres = (array, dictionary, key = 'genres') =>
       [key]: movieGenres,
     };
   });
+
+export const groupByGenres = (arr) =>
+  arr.reduce(
+    (obj, movie) => {
+      const { genres } = movie;
+      genres.forEach((genre) => {
+        const value = obj[genre.name] || [];
+
+        obj[genre.name] = [...value, { ...movie }];
+      });
+
+      return obj;
+    },
+    { all: arr },
+  );
