@@ -24,6 +24,9 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
     [hasGenres],
   );
 
+  console.log('genresDictionary', genresDictionary);
+  console.log('genres', genres);
+
   if (movies.length === 0 || !hasGenres) {
     return null;
   }
