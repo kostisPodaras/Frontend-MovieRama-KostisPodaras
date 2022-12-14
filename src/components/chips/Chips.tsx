@@ -1,7 +1,10 @@
 import styles from './Chips.module.css';
 
 interface ChipsProps {
-  chips?: string[];
+  chips?: {
+    value: string;
+    id: number;
+  }[];
 }
 
 export const Chips = ({ chips }: ChipsProps) => {
@@ -9,11 +12,13 @@ export const Chips = ({ chips }: ChipsProps) => {
     return null;
   }
 
+  console.log('chips', chips);
+
   return (
     <div className={styles.container}>
-      {chips.map((element, index) => (
-        <div key={`genre-${index}`}>
-          <p>{element}</p>
+      {chips.map(({ value, id }) => (
+        <div key={id}>
+          <p>{value}</p>
         </div>
       ))}
     </div>

@@ -17,7 +17,10 @@ export interface Movie {
   vote_average: number;
   overview: string;
   id: string;
-  genres?: string[];
+  genres?: {
+    value: string;
+    id: number;
+  }[];
 }
 
 export interface Similar {

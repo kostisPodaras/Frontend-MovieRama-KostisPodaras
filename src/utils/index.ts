@@ -14,7 +14,11 @@ export const arrayOfObjectsToDictionary = (arr, property) =>
 
 export const matchGenresIdsWithGenres = (array, dictionary, key = 'genres') =>
   array.map((movie) => {
-    const movieGenres = movie.genre_ids.map((id) => dictionary[id].name);
+    console.log('movieGenres', movie);
+    const movieGenres = movie.genre_ids.map((id) => ({
+      value: dictionary[id].name,
+      id,
+    }));
 
     return {
       ...movie,

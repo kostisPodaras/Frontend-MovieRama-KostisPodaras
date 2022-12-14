@@ -23,6 +23,7 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   );
 
   const moviesWithGenres = matchGenresIdsWithGenres(movies, genresDictionary);
+  console.log('moviesWithGenres', moviesWithGenres);
 
   return (
     <>
