@@ -3,7 +3,7 @@ import { memo, useMemo } from 'react';
 import { Movie } from 'types';
 import { Card } from 'components';
 import { useGenres } from 'hooks';
-import { arrayOfObjectsToDictionary } from 'utils';
+import { arrayOfObjectsToDictionary, matchGenresIdsWithGenres } from 'utils';
 
 import styles from './MoviesList.module.css';
 
@@ -16,29 +16,17 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   const { genres } = useGenres();
   const hasGenres = genres.length > 0;
 
-  console.log('RENDEEER');
-
   // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. It gets pretty heavy performance wise
   const genresDictionary = useMemo(
     () => arrayOfObjectsToDictionary(genres, 'id'),
     [hasGenres],
   );
 
-  console.log('genresDictionary', genresDictionary);
-  console.log('genres', genres);
+  const moviesWithGenres = matchGenresIdsWithGenres(movies, genresDictionary);
 
-  if (movies.length === 0 || !hasGenres) {
-    return null;
+  if (movies.length === 0) {
+    return <h2>No results found</h2>;
   }
-
-  const moviesWithGenres = movies.map((movie) => {
-    const movieGenres = movie.genre_ids.map((id) => genresDictionary[id].name);
-
-    return {
-      ...movie,
-      genres: movieGenres,
-    };
-  });
 
   return (
     <div className={styles.container}>

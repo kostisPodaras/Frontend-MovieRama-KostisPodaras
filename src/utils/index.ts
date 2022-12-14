@@ -11,3 +11,13 @@ export const arrayOfObjectsToDictionary = (arr, property) =>
 
     return obj;
   }, {});
+
+export const matchGenresIdsWithGenres = (array, dictionary) =>
+  array.map((movie) => {
+    const movieGenres = movie.genre_ids.map((id) => dictionary[id].name);
+
+    return {
+      ...movie,
+      genres: movieGenres,
+    };
+  });
