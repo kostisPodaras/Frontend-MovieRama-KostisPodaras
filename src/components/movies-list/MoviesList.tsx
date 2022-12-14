@@ -24,25 +24,27 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
 
   const moviesWithGenres = matchGenresIdsWithGenres(movies, genresDictionary);
 
-  if (movies.length === 0) {
-    return <h2>No results found</h2>;
-  }
-
   return (
-    <div className={styles.container}>
-      {moviesWithGenres.map((movie, i) => {
-        // If the element is the last one, we add a ref to it in order to observe it and trigger a new request when its getting into the viewport
-        const isLastElement = movies.length === i + 1;
+    <>
+      {movies.length > 0 ? (
+        <div className={styles.container}>
+          {moviesWithGenres.map((movie, i) => {
+            // If the element is the last one, we add a ref to it in order to observe it and trigger a new request when its getting into the viewport
+            const isLastElement = movies.length === i + 1;
 
-        return (
-          <Card
-            ref={isLastElement ? lastMovieRef : null}
-            key={movie.id}
-            movie={movie}
-          />
-        );
-      })}
-    </div>
+            return (
+              <Card
+                ref={isLastElement ? lastMovieRef : null}
+                key={movie.id}
+                movie={movie}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <h2>No results found</h2>
+      )}
+    </>
   );
 };
 
