@@ -36,7 +36,7 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   const moviesByGenre = groupByGenres(moviesWithGenres);
 
   return (
-    <>
+    <main>
       <Chips
         chips={[{ id: 'all', name: 'all' }, ...genres]}
         handleClick={setFilter}
@@ -62,7 +62,7 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
       ) : (
         <h4>No {filter} movies found</h4>
       )}
-    </>
+    </main>
   );
 };
 

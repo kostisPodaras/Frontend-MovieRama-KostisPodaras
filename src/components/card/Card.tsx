@@ -15,7 +15,7 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
 
     return (
       <>
-        <div ref={ref || null}>
+        <div data-testid="card" ref={ref || null}>
           <div
             onClick={() => setIsOpen(true)}
             style={{
@@ -23,7 +23,8 @@ export const Card = React.forwardRef<HTMLInputElement, CardProps>(
                 ? `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
                 : 'url(https://nogalss.org/admin/assets/images/no-image2.png)',
             }}
-            className={styles.container}>
+            className={styles.container}
+            data-testid="card-background">
             <div className={styles.genresWrapper}>
               <Chips chips={movie.genres} />
             </div>

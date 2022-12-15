@@ -12,7 +12,7 @@ export const Review = ({ content, name, image }: ReviewProps) => {
     <div className={styles.container}>
       <Avatar name={name} image={image} />
 
-      <p className={styles.content}>Content: {content}</p>
+      <article className={styles.content}>Content: {content}</article>
     </div>
   );
 };

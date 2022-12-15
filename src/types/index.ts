@@ -1,5 +1,5 @@
 export interface Review {
-  id: string;
+  id: number;
   content: string;
   author_details: {
     rating: number;
@@ -16,7 +16,7 @@ export interface Movie {
   genre_ids: number[];
   vote_average: number;
   overview: string;
-  id: string;
+  id: number;
   genres?: {
     name: string;
     id: number;
@@ -24,7 +24,7 @@ export interface Movie {
 }
 
 export interface Similar {
-  id: string;
+  id: number;
   overview: string;
   poster_path: string;
   vote_average: number;

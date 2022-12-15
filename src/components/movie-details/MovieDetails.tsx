@@ -4,7 +4,7 @@ import { Spinner } from 'components';
 import { VideoPlayer, Reviews, SimilarMovies } from './components';
 
 interface MovieDetailsProps {
-  movieId: string;
+  movieId: number;
 }
 
 export const MovieDetails = ({ movieId }: MovieDetailsProps) => {

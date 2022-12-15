@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component matches snapshot 1`] = `
+<div
+  data-testid="card"
+>
+  <div
+    className="container"
+    data-testid="card-background"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundImage": "url(https://image.tmdb.org/t/p/w500/pUPwTbnAqfm95BZjNBnMMf39ChT.jpg)",
+      }
+    }
+  >
+    <div
+      className="genresWrapper"
+    >
+      <div
+        className="container undefined"
+      >
+        <div
+          className="chip "
+          onClick={[Function]}
+        >
+          <p
+            className="chipText"
+          >
+            Thriller
+          </p>
+        </div>
+        <div
+          className="chip "
+          onClick={[Function]}
+        >
+          <p
+            className="chipText"
+          >
+            Crime
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      className="overviewOverlay"
+    >
+      <p>
+        A stockbroker in a small southern town gets embroiled in an insurance scam with a next-door neighbor that leads to multiple murders when a host of other people want in on the plot. Sheriff Thurmond Fowler, the by-the-book town sheriff for over four decades, works earnestly to try and unravel the town’s mystery and winds up getting more than he bargained for.
+      </p>
+    </div>
+  </div>
+  <p
+    className="text"
+  >
+    The Minute You Wake Up Dead
+     | 
+    2022
+  </p>
+  <div
+    className="rating"
+  >
+    <div
+      className="belowAverage rating"
+    />
+    <p>
+      5.5
+    </p>
+  </div>
+</div>
+`;

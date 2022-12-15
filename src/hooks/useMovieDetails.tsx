@@ -5,7 +5,7 @@ import { Review, Movie, Similar } from 'types';
 import { getMovieDetails } from '../services';
 
 interface Video {
-  id: string;
+  id: number;
   key: string;
   name: string;
   site: string;
@@ -25,7 +25,7 @@ interface Response extends Movie {
   };
 }
 
-export const useMovieDetails = (movieId: string) => {
+export const useMovieDetails = (movieId: number) => {
   const [movieDetails, setMovieDetails] = useState<Response>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
