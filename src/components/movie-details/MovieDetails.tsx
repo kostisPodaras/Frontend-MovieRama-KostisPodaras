@@ -30,7 +30,7 @@ export const MovieDetails = ({ movieId }: MovieDetailsProps) => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div>
+        <div data-testid="movie-details-wrapper">
           <VideoPlayer id={trailer?.key || videos.results?.[0]?.key} />
           <Reviews reviews={reviews.results} maxReviewsShown={2} />
           <SimilarMovies

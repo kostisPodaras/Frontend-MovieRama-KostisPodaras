@@ -33,8 +33,6 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   // We also keep the filtering after we search, so we search only for the specific filter
   const moviesByGenre = groupByGenres(moviesWithGenres);
 
-  console.log(moviesByGenre?.[filter]);
-
   return (
     <main>
       <Chips

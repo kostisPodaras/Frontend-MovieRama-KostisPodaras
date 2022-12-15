@@ -5,7 +5,7 @@ import { Review, Movie, Similar } from 'types';
 import { getMovieDetails } from '../services';
 
 interface Video {
-  id: number;
+  id: number | string;
   key: string;
   name: string;
   site: string;
@@ -43,6 +43,8 @@ export const useMovieDetails = (movieId: number) => {
         setIsError(true);
       });
   }, []);
+
+  console.log('movieDetails', movieDetails);
 
   return {
     movieDetails,
