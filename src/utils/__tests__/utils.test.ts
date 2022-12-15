@@ -1,7 +1,8 @@
 import {
+  groupByGenres,
   getUniqueElements,
-  arrayOfObjectsToDictionary,
   matchGenresIdsWithGenres,
+  arrayOfObjectsToDictionary,
 } from '..';
 
 describe('getUniqueElements function', () => {
@@ -133,5 +134,68 @@ describe('matchGenresIdsWithGenres function', () => {
         ],
       },
     ]);
+  });
+});
+
+describe('groupByGenres function', () => {
+  test('should group elements based on genres. Each element can exist into multiple categories', () => {
+    const movie1 = {
+      title: 'Black Adam',
+      genres: [
+        { name: 'Action', id: 28 },
+        { name: 'Fantasy', id: 14 },
+        { name: 'Science Fiction', id: 878 },
+      ],
+    };
+    const movie2 = {
+      title: 'The Woman King',
+      genres: [
+        { name: 'Action', id: 28 },
+        { name: 'Drama', id: 18 },
+        { name: 'History', id: 36 },
+      ],
+    };
+    const movie3 = {
+      title: 'Avatar: The Way of Water',
+      genres: [
+        { name: 'Science Fiction', id: 878 },
+        { name: 'Action', id: 28 },
+        { name: 'Adventure', id: 12 },
+      ],
+    };
+    const movie4 = {
+      title: 'Black Panther: Wakanda Forever',
+      genres: [
+        { name: 'Action', id: 28 },
+        { name: 'Adventure', id: 12 },
+        { name: 'Science Fiction', id: 878 },
+      ],
+    };
+    const movie5 = {
+      title: 'The Minute You Wake Up Dead',
+      genres: [
+        { name: 'Thriller', id: 53 },
+        { name: 'Crime', id: 80 },
+      ],
+    };
+
+    // GIVEN
+    const moviesArray = [movie1, movie2, movie3, movie4, movie5];
+
+    // WHEN
+    const result = groupByGenres(moviesArray);
+
+    // THEN
+    expect(result).toEqual({
+      all: moviesArray,
+      Action: [movie1, movie2, movie3, movie4],
+      Fantasy: [movie1],
+      'Science Fiction': [movie1, movie3, movie4],
+      Drama: [movie2],
+      History: [movie2],
+      Adventure: [movie3, movie4],
+      Thriller: [movie5],
+      Crime: [movie5],
+    });
   });
 });

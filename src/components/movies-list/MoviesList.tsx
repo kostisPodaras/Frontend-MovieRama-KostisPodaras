@@ -37,14 +37,12 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
 
   return (
     <>
-      <div>
-        <Chips
-          chips={[{ id: 'all', name: 'all' }, ...genres]}
-          handleClick={setFilter}
-          active={filter}
-          stylesOverride={styles.chipsOverride}
-        />
-      </div>
+      <Chips
+        chips={[{ id: 'all', name: 'all' }, ...genres]}
+        handleClick={setFilter}
+        active={filter}
+        stylesOverride={styles.chipsOverride}
+      />
 
       {moviesByGenre?.[filter] ? (
         <div className={styles.container}>
