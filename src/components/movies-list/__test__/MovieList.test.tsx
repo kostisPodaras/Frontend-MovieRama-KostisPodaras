@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import * as hooks from 'hooks/useGenres';
 
-import { MoviesList } from '..';
+import { MoviesList } from '../MoviesList';
 
 describe('MovieList component', () => {
   const mockProps = [
@@ -29,7 +29,7 @@ describe('MovieList component', () => {
     },
   ];
 
-  test('Should render the component', () => {
+  beforeEach(() => {
     jest.spyOn(hooks, 'useGenres').mockImplementation(() => {
       return {
         genres: [
@@ -41,43 +41,21 @@ describe('MovieList component', () => {
         genresIsError: false,
       };
     });
+  });
 
+  test('Should render the component', () => {
     render(<MoviesList movies={mockProps} lastMovieRef={null} />);
     const mainElement = screen.getByRole('main');
     expect(mainElement).toBeInTheDocument();
   });
 
   test('Should render all the chips plus the "all" chip', () => {
-    jest.spyOn(hooks, 'useGenres').mockImplementation(() => {
-      return {
-        genres: [
-          { id: 28, name: 'Action' },
-          { id: 12, name: 'Adventure' },
-          { id: 16, name: 'Animation' },
-        ],
-        genresIsLoading: false,
-        genresIsError: false,
-      };
-    });
-
     render(<MoviesList movies={[]} lastMovieRef={null} />);
     const chipElement = screen.getAllByTestId('chip');
     expect(chipElement).toHaveLength(4);
   });
 
   test('matches snapshot', () => {
-    jest.spyOn(hooks, 'useGenres').mockImplementation(() => {
-      return {
-        genres: [
-          { id: 28, name: 'Action' },
-          { id: 12, name: 'Adventure' },
-          { id: 16, name: 'Animation' },
-        ],
-        genresIsLoading: false,
-        genresIsError: false,
-      };
-    });
-
     const snapshot = renderer.create(
       <MoviesList movies={mockProps} lastMovieRef={null} />,
     );

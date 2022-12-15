@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList component matches snapshot 1`] = `
+<div
+  data-testid="movie-details-wrapper"
+>
+  <iframe
+    className="iframe"
+    src="https://www.youtube.com/embed/JaV7mmc9HGw"
+  />
+  <div>
+    <h4
+      className="reviewsTitle"
+    >
+      Reviews
+    </h4>
+    <div
+      className="container"
+    >
+      <div
+        className="nameWrapper"
+      >
+        <div
+          className="avatar"
+          style={
+            Object {
+              "backgroundImage": "unset",
+            }
+          }
+        >
+          <p>
+            MS
+          </p>
+        </div>
+        <p>
+          msbreviews
+        </p>
+      </div>
+      <article
+        className="content"
+      >
+        Content: 
+        FULL SPOILER-FREE REVIEW @ https://www.msbreviews.com/movie-reviews/black-adam-spoiler-free-review
+
+"Black Adam is far from impressive, being somewhat disappointing due to its formulaic, predictable screenplay when something different was anticipated.
+
+Lorne Balfe's epic score and a magnificent cast - Dwayne Johnson, Aldis Hodge, and most remarkably Pierce Brosnan are phenomenal - try to elevate the decent action and visuals, but the moderate entertainment levels don't make up for the dated narrative structure.
+
+Tiresomely heavy exposition, story with little to no creativity, and inconsistent humor make it impossible for the DCEU to take "the next step" in a truly impactful manner."
+
+Rating: C+
+      </article>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="nameWrapper"
+      >
+        <div
+          className="avatar"
+          style={
+            Object {
+              "backgroundImage": "url(https://image.tmdb.org/t/p/w500/3H7iyvGtmsHQFcKIoaC1PkjiPij.jpg)",
+            }
+          }
+        />
+        <p>
+          farazmushtaqk
+        </p>
+      </div>
+      <article
+        className="content"
+      >
+        Content: 
+        Well it wasn't disappointing...
+      </article>
+    </div>
+  </div>
+  <div>
+    <h4
+      className="title"
+    >
+      Similar movies
+    </h4>
+    <div
+      className="container"
+    >
+      <div
+        className="leftSection"
+      >
+        <img
+          className="image"
+          src="https://image.tmdb.org/t/p/w500/idT5mnqPcJgSkvpDX7pJffBzdVH.jpg"
+        />
+        <p>
+          Barbarian
+        </p>
+      </div>
+      <div
+        className="rightSection"
+      >
+        <p>
+          In town for a job interview, a young woman arrives at her Airbnb late at night only to find that it has been mistakenly double-booked and a strange man is already staying there. Against her better judgement, she decides to stay the night anyway.
+        </p>
+        <div
+          className="rating"
+        >
+          <div
+            className="aboveAverage rating"
+          />
+          <span>
+            883
+             votes
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <div
+        className="leftSection"
+      >
+        <img
+          className="image"
+          src="https://image.tmdb.org/t/p/w500/s5R8Jax1IjxF4a3IygLCW1Zib6GB.jpg"
+        />
+        <p>
+          Venom 3
+        </p>
+      </div>
+      <div
+        className="rightSection"
+      >
+        <p>
+          The third entry in the Venom trilogy confirmed to be in development by Amy Pascal.
+        </p>
+        <div
+          className="rating"
+        >
+          <div
+            className="belowAverage rating"
+          />
+          <span>
+            0
+             votes
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -142,4 +142,12 @@ describe('MovieList component', () => {
     const { container } = render(<MovieDetails movieId={123} />);
     expect(container).toBeEmptyDOMElement();
   });
+
+  test('matches snapshot', () => {
+    jest.spyOn(hooks, 'useMovieDetails').mockImplementation(() => {
+      return mockDetails;
+    });
+    const snapshot = renderer.create(<MovieDetails movieId={123} />);
+    expect(snapshot).toMatchSnapshot();
+  });
 });
