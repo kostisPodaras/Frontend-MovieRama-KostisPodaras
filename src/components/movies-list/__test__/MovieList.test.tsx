@@ -43,13 +43,13 @@ describe('MovieList component', () => {
     });
   });
 
-  test('Should render the component', () => {
+  test('hould render the component', () => {
     render(<MoviesList movies={mockProps} lastMovieRef={null} />);
     const mainElement = screen.getByRole('main');
     expect(mainElement).toBeInTheDocument();
   });
 
-  test('Should render all the chips plus the "all" chip', () => {
+  test('hould render all the chips plus the "all" chip', () => {
     render(<MoviesList movies={[]} lastMovieRef={null} />);
     const chipElement = screen.getAllByTestId('chip');
     expect(chipElement).toHaveLength(4);

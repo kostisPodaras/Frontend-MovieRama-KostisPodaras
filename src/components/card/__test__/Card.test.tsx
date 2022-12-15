@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
-import { Card } from '..';
+import { Card } from '../Card';
 
 describe('Card component', () => {
   const mockProps = {

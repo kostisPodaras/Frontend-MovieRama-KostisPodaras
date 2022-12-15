@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 
 import { useSearchMovies, useMovies, useLastMovieRef } from './hooks';
 import { MoviesList, Search, Spinner, ScrollToTop } from './components';
