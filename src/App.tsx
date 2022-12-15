@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useMemo, useEffect } from 'react';
 
+import { useSearchMovies, useMovies, useLastMovieRef } from './hooks';
 import { MoviesList, Search, Spinner, ScrollToTop } from './components';
-import { useSearchMovies, useMovies } from './hooks';
 import './App.css';
 
 const App = () => {
@@ -22,25 +22,7 @@ const App = () => {
   const hasNextPage = query ? queryHasNextPage : theaterMoviesHasNextPage;
   const isLoading = query ? queryIsLoading : theaterMoviesIsLoading;
 
-  const intersectionObserver = useRef<IntersectionObserver | null>(null);
-  const lastMovieRef = useCallback(
-    (movie: HTMLDivElement) => {
-      if (isLoading) return;
-
-      if (intersectionObserver.current) {
-        intersectionObserver.current.disconnect();
-      }
-
-      intersectionObserver.current = new IntersectionObserver((movies) => {
-        if (movies[0].isIntersecting && hasNextPage) {
-          setPageNumber((prev) => prev + 1);
-        }
-      });
-
-      if (movie) intersectionObserver.current.observe(movie);
-    },
-    [isLoading, hasNextPage],
-  );
+  const lastMovieRef = useLastMovieRef(isLoading, hasNextPage, setPageNumber);
 
   // Using memo for referencial equality for the memoization of MoviesList. Each keystroke triggers a re-render and MoviesList is a "heavy" component.
   const movies = useMemo(() => {
