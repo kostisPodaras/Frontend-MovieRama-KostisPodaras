@@ -18,9 +18,7 @@ interface MoviesListProps {
 
 const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   const { genres } = useGenres();
-
   const [filter, setFilter] = useState('all');
-
   const hasGenres = genres.length > 0;
 
   // Transforming array of objects to dictionary so we dont have to iterate for each movie multiple times to find the correct genre based on id. It gets pretty heavy performance wise
@@ -34,6 +32,8 @@ const List = ({ movies, lastMovieRef }: MoviesListProps) => {
   // Group movies based on genre. That way filtering will be instant, since we just grab the property of the filter with the already pre-filtered movies, instead of filtering again and again on filter change.
   // We also keep the filtering after we search, so we search only for the specific filter
   const moviesByGenre = groupByGenres(moviesWithGenres);
+
+  console.log(moviesByGenre?.[filter]);
 
   return (
     <main>

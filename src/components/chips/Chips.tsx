@@ -24,6 +24,7 @@ export const Chips = ({
     <div className={`${styles.container} ${stylesOverride}`}>
       {chips.map(({ name, id }) => (
         <div
+          data-testid="chip"
           className={`${styles.chip} ${active === name ? styles.active : ''}`}
           onClick={() => {
             handleClick && handleClick(name);

@@ -22,6 +22,7 @@ exports[`Card component matches snapshot 1`] = `
       >
         <div
           className="chip "
+          data-testid="chip"
           onClick={[Function]}
         >
           <p
@@ -32,6 +33,7 @@ exports[`Card component matches snapshot 1`] = `
         </div>
         <div
           className="chip "
+          data-testid="chip"
           onClick={[Function]}
         >
           <p

@@ -3,7 +3,7 @@ import { API_GENRES } from '../API';
 
 interface Genre {
   id: number;
-  name: 'string';
+  name: string;
 }
 
 export const useGenres = (): {

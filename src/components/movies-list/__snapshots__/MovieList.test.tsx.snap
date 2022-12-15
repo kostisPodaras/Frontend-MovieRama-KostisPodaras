@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList component matches snapshot 1`] = `
+<main>
+  <div
+    className="container chipsOverride"
+  >
+    <div
+      className="chip active"
+      data-testid="chip"
+      onClick={[Function]}
+    >
+      <p
+        className="chipText"
+      >
+        all
+      </p>
+    </div>
+    <div
+      className="chip "
+      data-testid="chip"
+      onClick={[Function]}
+    >
+      <p
+        className="chipText"
+      >
+        Action
+      </p>
+    </div>
+    <div
+      className="chip "
+      data-testid="chip"
+      onClick={[Function]}
+    >
+      <p
+        className="chipText"
+      >
+        Adventure
+      </p>
+    </div>
+    <div
+      className="chip "
+      data-testid="chip"
+      onClick={[Function]}
+    >
+      <p
+        className="chipText"
+      >
+        Animation
+      </p>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <div
+      data-testid="card"
+    >
+      <div
+        className="container"
+        data-testid="card-background"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundImage": "url(https://image.tmdb.org/t/p/w500/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg)",
+          }
+        }
+      >
+        <div
+          className="genresWrapper"
+        >
+          <div
+            className="container undefined"
+          >
+            <div
+              className="chip "
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              >
+                Action
+              </p>
+            </div>
+            <div
+              className="chip active"
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              />
+            </div>
+            <div
+              className="chip active"
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="overviewOverlay"
+        >
+          <p>
+            Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.
+          </p>
+        </div>
+      </div>
+      <p
+        className="text"
+      >
+        Black Adam
+         | 
+        2022
+      </p>
+      <div
+        className="rating"
+      >
+        <div
+          className="aboveAverage rating"
+        />
+        <p>
+          7.3
+        </p>
+      </div>
+    </div>
+    <div
+      data-testid="card"
+    >
+      <div
+        className="container"
+        data-testid="card-background"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundImage": "url(https://image.tmdb.org/t/p/w500/lQMJHnHxUyj8kJlC2YOKNuzuwMP.jpg)",
+          }
+        }
+      >
+        <div
+          className="genresWrapper"
+        >
+          <div
+            className="container undefined"
+          >
+            <div
+              className="chip "
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              >
+                Action
+              </p>
+            </div>
+            <div
+              className="chip active"
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              />
+            </div>
+            <div
+              className="chip active"
+              data-testid="chip"
+              onClick={[Function]}
+            >
+              <p
+                className="chipText"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="overviewOverlay"
+        >
+          <p>
+            The story of the Agojie, the all-female unit of warriors who protected the African Kingdom of Dahomey in the 1800s with skills and a fierceness unlike anything the world has ever seen, and General Nanisca as she trains the next generation of recruits and readies them for battle against an enemy determined to destroy their way of life.
+          </p>
+        </div>
+      </div>
+      <p
+        className="text"
+      >
+        The Woman King
+         | 
+        2022
+      </p>
+      <div
+        className="rating"
+      >
+        <div
+          className="aboveAverage rating"
+        />
+        <p>
+          7.9
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+`;
